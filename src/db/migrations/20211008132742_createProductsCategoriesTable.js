@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-  return knex.schema.createTable("categories", (table) => {
+  return knex.schema.createTable("products_categories", (table) => {
     table.increments("category_id").primary();
     table.string("category_name");
     table.text("category_description");
@@ -8,5 +8,5 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTable("categories");
+  return knex.schema.dropTable("products_categories");
 };
