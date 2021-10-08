@@ -1,4 +1,4 @@
-const products = require("../fixtures/products");
+const products = require("../src/db/fixtures/products");
 
 exports.seed = function (knex) {
   return knex

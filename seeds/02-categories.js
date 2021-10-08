@@ -1,4 +1,4 @@
-const categories = require("../fixtures/categories");
+const categories = require("../src/db/fixtures/categories");
 
 exports.seed = function (knex) {
   return knex

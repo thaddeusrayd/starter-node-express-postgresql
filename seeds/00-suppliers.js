@@ -1,4 +1,4 @@
-const suppliers = require("../fixtures/suppliers");
+const suppliers = require("../src/db/fixtures/suppliers");
 
 exports.seed = function (knex) {
   return knex
