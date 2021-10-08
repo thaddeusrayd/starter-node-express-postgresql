@@ -1,9 +1,7 @@
 exports.up = function (knex) {
   return knex.schema.createTable("products_categories", (table) => {
     table.increments("category_id").primary();
-    table.string("category_name");
-    table.text("category_description");
-    table.timestamps(true, true);
+    table.increments("product_id");
   });
 };
 
