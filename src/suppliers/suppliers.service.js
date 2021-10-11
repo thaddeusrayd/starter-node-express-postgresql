@@ -20,6 +20,5 @@ function update(updatedSupplier) {
 }
 
 module.exports = {
-  create: [hasOnlyValidProperties, hasRequiredProperties, create],
-  update: [hasOnlyValidProperties, hasRequiredProperties, update],
+  create,
 };
