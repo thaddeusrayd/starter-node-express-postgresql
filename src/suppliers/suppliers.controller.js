@@ -1,3 +1,5 @@
+const hasProperties = require("../errors/hasProperties");
+const hasRequiredProperties = hasProperties("supplier_name", "supplier_email");
 const suppliersService = require("./suppliers.service.js");
 
 const VALID_PROPERTIES = [
