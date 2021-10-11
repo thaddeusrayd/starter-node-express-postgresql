@@ -1,3 +1,4 @@
+const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 const { default: knex } = require("knex");
 const productsService = require("./products.service");
 
@@ -25,6 +26,6 @@ function read(product_id) {
 }
 
 module.exports = {
-  read: [read, productExists],
-  list: [list],
+  read: [read, asyncErrorBoundary(productExists)],
+  list: asyncErrorBoundary(list),
 };
