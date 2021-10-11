@@ -1,8 +1,22 @@
 const { default: knex } = require("knex");
 const productsService = require("./products.service");
 
-function read(req, res, next) {
-  res.json({ data: { product_title: "some product title" } });
+function productExists(req, res, next) {
+  productsService
+    .read(req.params.productId)
+    .then((product) => {
+      if (product) {
+        res.locals.product = product;
+        return next();
+      }
+      next({ status: 404, message: `Product cannot be found.` });
+    })
+    .catch(next);
+}
+
+function read(req, res) {
+  const { product: data } = res.locals;
+  res.json({ data });
 }
 
 function list(req, res, next) {
@@ -17,6 +31,6 @@ function read(product_id) {
 }
 
 module.exports = {
-  read: [read],
+  read: [read, productExists],
   list: [list],
 };
