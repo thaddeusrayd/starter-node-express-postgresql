@@ -46,6 +46,19 @@ async function destroy(req, res, next) {
   res.sendStatus(204);
 }
 
+function supplierExists(req, res, next) {
+  suppliersService
+    .read(req.params.supplierId)
+    .then((supplier) => {
+      if (supplier) {
+        res.locals.supplier = supplier;
+        return next();
+      }
+      next({ status: 404, message: `Supplier cannot be found.` });
+    })
+    .catch(next);
+}
+
 module.exports = {
   create: [hasOnlyValidProperties, hasRequiredProperties, create],
   update: [hasOnlyValidProperties, hasRequiredProperties, update],
