@@ -1,3 +1,4 @@
+const { default: knex } = require("knex");
 const productsService = require("./products.service");
 
 function read(req, res, next) {
@@ -9,6 +10,10 @@ function list(req, res, next) {
     .list()
     .then((data) => res.json({ data }))
     .catch(next);
+}
+
+function read(product_id) {
+  return knex("products").select("*").where({ product_id }).first();
 }
 
 module.exports = {
