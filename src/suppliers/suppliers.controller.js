@@ -31,8 +31,11 @@ function hasOnlyValidProperties(req, res, next) {
   next();
 }
 
-async function create(req, res, next) {
-  res.status(201).json({ data: { supplier_name: "new supplier" } });
+function create(req, res, next) {
+  suppliersService
+    .create(req.body.data)
+    .then((data) => res.status(201).json({ data }))
+    .catch(next);
 }
 
 async function update(req, res, next) {
