@@ -1,3 +1,5 @@
+const suppliersService = require("./suppliers.service.js");
+
 async function create(req, res, next) {
   res.status(201).json({ data: { supplier_name: "new supplier" } });
 }
