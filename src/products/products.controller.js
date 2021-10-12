@@ -25,7 +25,12 @@ function read(product_id) {
   return knex("products").select("*").where({ product_id }).first();
 }
 
+async function listOutOfStockCount(req, res, next) {
+  res.json({ data: await productsService.listOutOfStockCount() });
+}
+
 module.exports = {
   read: [read, asyncErrorBoundary(productExists)],
   list: asyncErrorBoundary(list),
+  listOutOfStockCount: asyncErrorBoundary(listOutOfStockCount),
 };
